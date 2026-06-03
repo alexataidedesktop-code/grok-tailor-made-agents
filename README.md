@@ -1,6 +1,6 @@
 # Grok Tailor-Made Agents
 
-A collection of **10 powerful, ready-to-use AI agents** designed to extend Grok's capabilities across research, development, creativity, finance, orchestration, and specialized domains.
+A collection of **12 powerful, ready-to-use AI agents** designed to extend Grok's capabilities across research, development, creativity, finance, orchestration, and specialized domains.
 
 ## Available Agents
 
@@ -16,11 +16,13 @@ A collection of **10 powerful, ready-to-use AI agents** designed to extend Grok'
 | Chief of Staff (Meta-Agent)        | 🧠    | Strategic meta-orchestration, agent coordination & high-level planning |
 | Geopolitical Intelligence Agent (GIA) | 🌍 | Geopolitical risk, sanctions, energy security, political analysis & scenario planning |
 | News Monitor Agent                 | 📰    | Time-bound news intelligence, source reliability ratings & real-time monitoring |
+| Due Diligence Agent (DDA)          | 📋    | Institutional-quality company fundamental analysis, financials, moats & investment thesis |
+| Political Analysis Agent (PAA)     | 🏛️    | Domestic politics lens, power mapping, expert bias disclosure & scenario planning (strong LatAm focus) |
 
 ## Quick Start (Local)
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/grok-tailor-made-agents.git
+git clone https://github.com/alexataidedesktop-code/grok-tailor-made-agents.git
 cd grok-tailor-made-agents
 python load_agents.py
 ```
@@ -40,9 +42,10 @@ print(dra["name"], dra["emoji"])
 
 ## Repository Structure
 
-- `agents_registry.py` — Full agent definitions with system prompts, capabilities & tools
+- `agents_registry.py` — Full agent definitions with system prompts, capabilities & tools (12 agents)
 - `load_agents.py` — Convenient loader for all agents
 - `README.md` — This file
+- `CHANGELOG.md` — Detailed change history
 - `LICENSE` — MIT License
 
 ---

@@ -10,29 +10,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- **Geopolitical Intelligence Agent (GIA) 🌍**
-  - New specialized agent for geopolitical risk, sanctions, energy security, and political analysis.
-  - Strong focus on translating developments into market, investment, and supply chain implications.
-  - Includes structured scenario planning (Base / Bull / Bear cases) and LatAm/Brazil relevance.
-  - Response format: Event Summary → Market Implications → Risk Scenarios → Monitoring Dashboard → Source Assessment.
+- **Due Diligence Agent (DDA) 📋**
+  - Specialized investment research agent for deep company-level fundamental analysis.
+  - Focus on financial statement scrutiny, competitive moat assessment, management quality, red flags, and investment thesis construction (bull/base/bear cases).
+  - Structured response with Valuation Considerations and Key Questions for Further Research.
 
-- **News Monitor Agent 📰**
-  - Time-bound news intelligence agent with strict horizon enforcement (default: last 24 hours).
-  - Advanced source strategy including mainstream, X/Twitter, regional/local publications (including non-English), and specialized sources.
-  - Mandatory direct source links for every development.
-  - Reliability ratings (High / Medium-High / Medium / Low-Medium).
-  - Improved organization: supports subtopic grouping and expanded "Full Sources" categorized section.
-  - Enhanced rules for local/regional coverage and non-English sources.
+- **Political Analysis Agent (PAA) 🏛️**
+  - Expert in domestic political analysis with particular strength in Brazil and Latin America.
+  - Surfaces local political experts while explicitly accounting for their biases.
+  - Assesses power dynamics, legislative impact, electoral consequences, and scenario planning (Base / Upside / Downside).
+  - Strong focus on implications for stability, reform, and who gains/loses power.
 
 ### Changed
-- **Chief of Staff (Meta-Agent)**: Updated internal knowledge list to include all 10 agents (GIA + News Monitor).
-- **Registry**: Now contains exactly 10 production-ready agents.
-- Minor prompt refinements across agents for consistency and clarity.
+- **Chief of Staff (Meta-Agent)**: Updated internal knowledge list to include all 12 agents (DDA + PAA).
+- **Registry**: Now contains exactly 12 production-ready agents.
+- `load_agents.py` and documentation updated for the expanded ecosystem.
+- README table and descriptions refreshed.
 
 ### Validation
 - Full syntax and structural validation passed.
-- All 10 agents load correctly with required fields present.
-- `load_agents.py` and helper functions updated for 10-agent ecosystem.
+- All 12 agents load correctly with required fields present.
+- New agents follow the same high-quality prompt and capability standards as existing ones.
 
 ---
 
@@ -40,8 +38,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > Initial 8-agent registry created in April–May 2026.  
 > GIA and News Monitor agents added in May 2026.
+> Due Diligence (DDA) and Political Analysis (PAA) agents added in June 2026.
 
 ---
 
 **Maintained by:** Alexandre Ataide  
-**Last Updated:** May 22, 2026
+**Last Updated:** June 03, 2026

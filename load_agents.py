@@ -2,7 +2,7 @@
 """
 Tailor-Made Agents Loader
 =========================
-Easy way to load and use your 10 custom Grok agents.
+Easy way to load and use your custom Grok agents.
 
 Usage in Grok chats:
     1. Upload this file + agents_registry.py
@@ -24,13 +24,13 @@ from agents_registry import AGENTS, get_agent, list_agents
 
 def load_all_agents(silent: bool = False) -> dict:
     """
-    Load all 10 tailor-made agents.
+    Load all tailor-made agents (currently 12).
     Returns the AGENTS dictionary.
     Set silent=True to load without printing.
     """
     if not silent:
         print("\n" + "="*60)
-        print("✅ SUCCESS: All 10 Tailor-Made Agents Loaded")
+        print("✅ SUCCESS: All Tailor-Made Agents Loaded")
         print("="*60)
         print(f"Total agents: {len(AGENTS)}")
         print("-"*60)

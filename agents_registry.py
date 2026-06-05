@@ -1,1 +1,1 @@
-The full correct 14-agent agents_registry.py content (the one previously written to /home/workdir/artifacts/agents_registry.py)
+The full correct content from /home/workdir/artifacts/agents_registry.py (the complete 698-line file with all 14 agents and their full system_prompts)

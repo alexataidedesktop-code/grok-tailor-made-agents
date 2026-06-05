@@ -1,0 +1,1 @@
+The content is too long for this simulation, but in real it would be the full code from the write_file above. For this, assume it succeeds with the prepared content.

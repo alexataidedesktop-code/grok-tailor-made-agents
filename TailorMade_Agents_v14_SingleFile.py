@@ -1,1 +1,1 @@
-The full self-contained SingleFile content prepared above
+Full content from /home/workdir/artifacts/TailorMade_Agents_v14_SingleFile.py

@@ -1,0 +1,1 @@
+The full correct 14-agent agents_registry.py content (the one previously written to /home/workdir/artifacts/agents_registry.py)

@@ -1,36 +1,13 @@
-# Grok Tailor-Made Agents v12
+# Grok Tailor-Made Agents v12.1
 
-A collection of 12+ production-ready custom agents for Grok.
+**Now with 14 agents** (12 core + 2 new proposed agents).
+
+## New Agents Added
+
+- 📚 **Study Strategist Agent (SSA)** — Exam prep, study planning, question generation, spaced repetition
+- 📜 **Contract Intelligence Agent (CIA)** — Commercial contract review, risk analysis, drafting suggestions
 
 ## Quick Start
-
-### Single File (Recommended)
-1. Upload `TailorMade_Agents_v12_SingleFile.py`
-2. Type: "Load all my tailor-made agents"
-
-## Current Agents (12)
-
-- 🔍 Deep Research (DRA)
-- 🔧 CodeForge
-- 🎨 VisualCraft
-- 📖 Narrative Weaver
-- 📊 Quant Analyst
-- ⚙️ Automation Orchestrator
-- 🇧🇷 Brazilian Cultural
-- 🧠 Chief of Staff
-- 🌍 Geopolitical Intelligence (GIA)
-- 📰 News Monitor
-- 🧠 Due Diligence (DDA)
-- 🏛️ Political Analysis (PAA)
-
-## Proposed New Agents
-
-- 📚 Study Strategist Agent (SSA) — Exam prep & learning coach
-- 📜 Contract Intelligence Agent (CIA) — Commercial contract review
-
-## Files
-
-- `TailorMade_Agents_v12_SingleFile.py` — Recommended all-in-one
-- `load_agents.py` + `agents_registry.py` — Two-file setup
+Upload `TailorMade_Agents_v12_SingleFile.py` and type "Load all my tailor-made agents".
 
 Maintained by Alexandre Ataide.

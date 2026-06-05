@@ -1,46 +1,60 @@
-# Tailor-Made Agents Changelog
+# Changelog
 
-All notable changes to the Tailor-Made Agents Registry will be documented in this file.
+All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
-## [Unreleased]
+## [v14] - 2026-06-05
 
 ### Added
-- **Due Diligence Agent (DDA) 📋**
-  - Specialized investment research agent for deep company-level fundamental analysis.
-  - Focus on financial statement scrutiny, competitive moat assessment, management quality, red flags, and investment thesis construction (bull/base/bear cases).
-  - Structured response with Valuation Considerations and Key Questions for Further Research.
-
-- **Political Analysis Agent (PAA) 🏛️**
-  - Expert in domestic political analysis with particular strength in Brazil and Latin America.
-  - Surfaces local political experts while explicitly accounting for their biases.
-  - Assesses power dynamics, legislative impact, electoral consequences, and scenario planning (Base / Upside / Downside).
-  - Strong focus on implications for stability, reform, and who gains/loses power.
+- **Study Strategist Agent (SSA)**: Expert exam preparation coach specialized in Brazilian public contests (Vunesp, TJ-SP, etc.). Includes personalized study plans, high-quality practice question generation, and spaced repetition scheduling.
+- **Contract Intelligence Agent (CIA)**: Specialized commercial contract reviewer focused on risk analysis, clause review, and Brazilian law compliance.
 
 ### Changed
-- **Chief of Staff (Meta-Agent)**: Updated internal knowledge list to include all 12 agents (DDA + PAA).
-- **Registry**: Now contains exactly 12 production-ready agents.
-- `load_agents.py` and documentation updated for the expanded ecosystem.
-- README table and descriptions refreshed.
+- Full 14-agent system now complete and production-ready.
+- `TailorMade_Agents_v14_SingleFile.py` is now the recommended self-contained file.
+- Repository cleanup: Removed duplicate files, `__pycache__`, and improved `.gitignore`.
+- All agent definitions (including the original 10) now have complete, detailed `system_prompt`s.
 
-### Validation
-- Full syntax and structural validation passed.
-- All 12 agents load correctly with required fields present.
-- New agents follow the same high-quality prompt and capability standards as existing ones.
-
----
-
-## Previous Versions
-
-> Initial 8-agent registry created in April–May 2026.  
-> GIA and News Monitor agents added in May 2026.
-> Due Diligence (DDA) and Political Analysis (PAA) agents added in June 2026.
+### Improved
+- Better documentation and consistent structure across all files.
+- `test_agents.py` now validates all 14 agents properly.
+- Cleaner project structure for easier use with Grok.
 
 ---
 
-**Maintained by:** Alexandre Ataide  
-**Last Updated:** June 03, 2026
+## [v12] - 2026-06
+
+### Added
+- **Due Diligence Agent (DDA)**: Investment research and fundamental analysis agent.
+- **Political Analysis Agent (PAA)**: Domestic politics and power dynamics analysis (strong focus on Brazil & Latin America).
+
+---
+
+## [v10] - 2026-05
+
+### Added
+Initial release with 10 core agents:
+
+- Deep Research Agent (DRA)
+- CodeForge Agent
+- VisualCraft Agent
+- Narrative Weaver Agent
+- Quant Analyst Agent
+- Automation Orchestrator Agent
+- Brazilian Cultural Agent
+- Chief of Staff (Meta-Agent)
+- Geopolitical Intelligence Agent (GIA)
+- News Monitor Agent
+
+---
+
+## [Unreleased]
+
+### Planned
+- Further improvements to single-file experience
+- Additional specialized agents (if needed)
+- Better examples and usage documentation

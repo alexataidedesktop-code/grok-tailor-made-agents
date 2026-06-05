@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Tailor-Made Agents Loader
-=========================
-Easy way to load and use your custom Grok agents.
+Tailor-Made Agents Loader v12
+=============================
+Easy way to load and use your 12 custom Grok agents.
 
 Usage in Grok chats:
     1. Upload this file + agents_registry.py
@@ -24,13 +24,13 @@ from agents_registry import AGENTS, get_agent, list_agents
 
 def load_all_agents(silent: bool = False) -> dict:
     """
-    Load all tailor-made agents (currently 12).
+    Load all 12 tailor-made agents.
     Returns the AGENTS dictionary.
     Set silent=True to load without printing.
     """
     if not silent:
         print("\n" + "="*60)
-        print("✅ SUCCESS: All Tailor-Made Agents Loaded")
+        print("\u2705 SUCCESS: All 12 Tailor-Made Agents Loaded")
         print("="*60)
         print(f"Total agents: {len(AGENTS)}")
         print("-"*60)
@@ -42,6 +42,9 @@ def load_all_agents(silent: bool = False) -> dict:
         print("-"*60)
         print("Ready to use. Example:")
         print("   dra = get_agent('deep_research')")
+        print("   dda = get_agent('due_diligence')   # New: litigation & court docs")
+        print("   paa = get_agent('political_analysis')  # New: Brazilian politics & policy")
+        print("   chief = get_agent('chief_of_staff')")
         print("="*60 + "\n")
     
     return AGENTS
@@ -49,10 +52,10 @@ def load_all_agents(silent: bool = False) -> dict:
 
 def print_agent_list():
     """Pretty print all available agents with emojis."""
-    print("\n📋 Available Tailor-Made Agents:\n")
+    print("\n\ud83d\udccb Available Tailor-Made Agents:\n")
     for key in list_agents():
         agent = AGENTS[key]
-        print(f"  {agent['emoji']} {key:25} → {agent['name']}")
+        print(f"  {agent['emoji']} {key:25} \u2192 {agent['name']}")
     print()
 
 
@@ -61,7 +64,7 @@ def get_agent_safe(agent_key: str):
     try:
         return get_agent(agent_key)
     except ValueError as e:
-        print(f"❌ {e}")
+        print(f"\u274c {e}")
         print("Available keys:", list_agents())
         return None
 

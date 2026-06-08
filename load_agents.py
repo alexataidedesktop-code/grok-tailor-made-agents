@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Tailor-Made Agents Loader v14
+Tailor-Made Agents Loader v15
 =============================
-Easy loader for all 14 custom Grok agents.
+Easy loader for all 15 custom Grok agents (including Autonomous Orchestrator v2).
 """
 
 import sys
@@ -15,7 +15,7 @@ from agents_registry import AGENTS, get_agent, list_agents
 def load_all_agents(silent: bool = False):
     if not silent:
         print("\n" + "="*70)
-        print("✅ SUCCESS: All 14 Tailor-Made Agents Loaded")
+        print("✅ SUCCESS: All 15 Tailor-Made Agents Loaded (v15)")
         print("="*70)
         print(f"Total agents: {len(AGENTS)}")
         print("-"*70)
@@ -23,7 +23,7 @@ def load_all_agents(silent: bool = False):
             agent = AGENTS[key]
             print(f"  {agent['emoji']} {agent['name']}")
         print("-"*70)
-        print("Example: dra = get_agent('deep_research')")
+        print("Example: auto = activate_agent('autonomous_orchestrator')")
         print("="*70 + "\n")
     return AGENTS
 

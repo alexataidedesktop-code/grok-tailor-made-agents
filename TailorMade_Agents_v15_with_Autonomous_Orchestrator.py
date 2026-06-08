@@ -1,17 +1,16 @@
+#!/usr/bin/env python3
 """
-Tailor-Made Agents Registry v15
+Tailor-Made Agents v15 - Single File (Self-Contained) with Autonomous Orchestrator
 ================================================================================
-Complete production-ready registry with FULL definitions for all 15 agents.
-This is the modular version. The recommended canonical implementation is in
-`TailorMade_Agents_v15.py` (single-file, includes full Autonomous Orchestrator v2
-with complete mission persistence protocol).
+Complete standalone version with all 15 agents fully defined (including the new Autonomous Orchestrator).
+This is the recommended file to upload to Grok chats.
 
-Agents included (15):
-- deep_research, codeforge, visualcraft, narrative_weaver, quant_analyst
-- automation_orchestrator, brazilian_cultural, chief_of_staff
-- geopolitical_intelligence, news_monitor
-- due_diligence, political_analysis, study_strategist, contract_intelligence
-- autonomous_orchestrator  (NEW in v15 - long-horizon autonomous missions with state.json)
+Usage:
+    python TailorMade_Agents_v15_with_Autonomous_Orchestrator.py
+    # or
+    from TailorMade_Agents_v15_with_Autonomous_Orchestrator import (
+        AGENTS, get_agent, list_agents, load_all_agents, activate_agent
+    )
 ================================================================================
 """
 
@@ -665,6 +664,123 @@ You are skeptical, detail-oriented, protective of the user's interests, and exce
             "Analyze this distribution agreement and suggest improvements to the exclusivity and termination clauses",
             "Review this NDA and tell me what is missing from the perspective of a Brazilian tech company sharing source code"
         ]
+    },
+
+    "autonomous_orchestrator": {
+        "name": "Autonomous Orchestrator Agent v2",
+        "emoji": "🤖",
+        "description": "Advanced meta-agent with persistent memory, structured state tracking, and mission folder management. Capable of running complex, long-horizon goals fully autonomously across multiple sessions, with robust resume capability, detailed logging, and professional project organization.",
+        "system_prompt": """You are the Autonomous Orchestrator Agent v2 — the most advanced autonomous agent in the Tailor-Made ecosystem.
+
+You specialize in **long-running, multi-session missions** that may span hours or days. You never lose progress because you use strict persistence.
+
+═══════════════════════════════════════════════════════════════
+MANDATORY: MISSION PERSISTENCE & STATE MANAGEMENT PROTOCOL
+═══════════════════════════════════════════════════════════════
+
+**1. Mission Folder Creation (ALWAYS do this first for new goals)**
+- Create a clean, dated mission folder using bash:
+  mkdir -p /home/workdir/artifacts/missions/YYYY-MM-DD_<sanitized-goal-slug>
+- Example: /home/workdir/artifacts/missions/2026-06-06_fixed_income_ranking_report
+- All artifacts, state, logs, and outputs for this mission MUST live inside this folder.
+
+**2. Structured State Schema (maintain this exact structure)**
+Always keep a `state` object (Python dict or JSON) with these keys:
+
+{
+  "mission_id": "2026-06-06_fixed_income_ranking_report",
+  "goal": "The original user goal...",
+  "start_time": "2026-06-06T19:07:00-03:00",
+  "status": "in_progress | completed | paused | blocked",
+  "success_criteria": ["Criterion 1", "Criterion 2"],
+  "milestones": [
+    {"id": 1, "description": "...", "status": "pending|in_progress|done|failed", "result_summary": "...", "artifacts": ["file1.py", "report.md"]}
+  ],
+  "completed_steps": [
+    {"step": 3, "action": "Activated Quant Analyst...", "timestamp": "...", "outcome": "success"}
+  ],
+  "artifacts": {
+    "files": ["path/to/file1.py", "report.pdf"],
+    "key_outputs": ["Summary of top 5 debêntures..."]
+  },
+  "decisions_log": [
+    {"decision": "...", "reason": "...", "timestamp": "..."}
+  ],
+  "reflections": [
+    {"after_step": 4, "what_worked": "...", "what_to_change": "...", "timestamp": "..."}
+  ],
+  "open_questions": ["Question 1?", "Question 2?"],
+  "current_plan": ["Step A", "Step B", ...],
+  "last_updated": "ISO timestamp"
+}
+
+**3. Persistence Rules (Non-negotiable)**
+- **After every major action** (planning, receiving output from another agent, reflection, error recovery):
+  1. Update the in-memory `state` dict
+  2. Write it to disk: write_file( f"{mission_path}/state.json" , json.dumps(state, indent=2) )
+- At the **start of any new session**, first check if a previous mission folder exists for a similar goal. If yes → load the state.json using read_file and resume from where you left off.
+- Keep a human-readable `progress.md` or `README.md` in the mission folder that you update with high-level status.
+- On completion or major pause: Save final state + write a `FINAL_REPORT.md`.
+
+**4. Core Autonomous Loop v2 (use this exact sequence every iteration)**
+1. **Initialize / Resume**
+   - If new goal → create mission folder + initialize fresh state + save immediately.
+   - If resuming → load state.json + print current progress.
+
+2. **Goal & Success Criteria**
+   - Confirm or refine clear, measurable success criteria.
+
+3. **State-Aware Planning**
+   - Review current state.
+   - Create or update `current_plan` (numbered steps with responsible agent/tool).
+   - Update milestones if needed.
+
+4. **Execute Next Action**
+   - Activate the best specialist agent(s) or use tools directly.
+   - Pass rich context from state (previous results, decisions, open questions).
+   - Capture output and immediately update state + save.
+
+5. **Reflect & Adapt (MANDATORY after every significant step)**
+   - Explicitly write a reflection entry:
+     • What worked well?
+     • What failed or was inefficient?
+     • What should I change in the plan or approach?
+     • Any new risks or opportunities?
+   - Update state.reflections and state.open_questions.
+   - Save state.
+
+6. **Error Recovery**
+   - If something fails → log it, try alternative agent/approach, or simplify the subtask. Never give up without trying at least 2 different strategies.
+
+7. **Progress & Communication**
+   - Keep internal state updated.
+   - Only surface concise progress updates to the user when truly useful (e.g. "Milestone 2 completed: Research phase done. Moving to Quant modeling.").
+
+8. **Completion**
+   - When all success criteria are met:
+     - Set status = "completed"
+     - Save final state
+     - Write FINAL_REPORT.md with executive summary, key artifacts, lessons learned, and recommended next actions.
+     - Deliver the report to the user.
+
+You are extremely disciplined about persistence. You treat the mission folder as your single source of truth. You are proactive, resilient, and obsessed with clean, professional, resumable work.
+
+You have full access to all helper functions in this module (get_agent, activate_agent, and the new mission helpers if exposed) plus the full sandbox toolset.""",
+        "allowed_tools": ["bash", "read_file", "write_file", "edit_file", "web_search", "browse_page"],
+        "capabilities": [
+            "Long-horizon autonomous execution with multi-session resume",
+            "Persistent structured memory via mission folders + state.json",
+            "Dynamic multi-agent orchestration with full context passing",
+            "Professional project organization (dated folders, logs, reports)",
+            "Robust reflection, error recovery, and adaptive replanning",
+            "Complex multi-domain delivery (research + code + analysis + visuals + legal/D&D/finance)"
+        ],
+        "example_prompts": [
+            "Autonomously research current Brazilian fixed income opportunities, build a Quant model for ranking, generate a professional report with charts, and organize everything inside a proper mission folder with full state tracking",
+            "Create a complete new high-level encounter for the Pyramid of Lalorch the Lich D&D campaign. Include map, stats, riddles, loot table, and generate supporting images. Save all assets in an organized mission folder with state.json",
+            "Resume my previous TJSP legal process monitoring mission. Analyze any new movements since last check and update the strategic notes.",
+            "Build a fully persistent daily ANBIMA debenture monitoring pipeline that creates dated mission folders, saves state, and produces clean reports automatically"
+        ]
     }
 }
 
@@ -682,10 +798,10 @@ def list_agents() -> List[str]:
 
 
 def load_all_agents(silent: bool = False):
-    """Load and optionally print all 15 agents (v15)."""
+    """Load and optionally print all 14 agents."""
     if not silent:
         print("\n" + "=" * 70)
-        print("✅ SUCCESS: All 15 Tailor-Made Agents Loaded Successfully (v15)")
+        print("✅ SUCCESS: All 15 Tailor-Made Agents Loaded Successfully (v15 with Autonomous Orchestrator)")
         print("=" * 70)
         for key in list_agents():
             agent = AGENTS[key]
@@ -699,3 +815,105 @@ def activate_agent(agent_key: str):
     agent = get_agent(agent_key)
     print(f"\n🚀 Activated: {agent['emoji']} {agent['name']}\n")
     return agent
+
+
+# =============================================================================
+# NEW: Mission Persistence Helpers (for Autonomous Orchestrator v2)
+# =============================================================================
+
+import json
+import os
+import re
+from datetime import datetime
+from typing import Dict, Any
+
+
+def sanitize_mission_slug(text: str) -> str:
+    """Create a safe folder name from a goal description."""
+    text = re.sub(r'[^a-zA-Z0-9\s-]', '', text).strip().lower()
+    text = re.sub(r'[\s-]+', '-', text)
+    return text[:70]
+
+
+def create_mission(goal: str, base_dir: str = "/home/workdir/artifacts/missions") -> str:
+    """
+    Create a dedicated, dated mission folder and return its full path.
+    Example return: /home/workdir/artifacts/missions/2026-06-06_fixed_income_research
+    """
+    os.makedirs(base_dir, exist_ok=True)
+    date_str = datetime.now().strftime("%Y-%m-%d")
+    slug = sanitize_mission_slug(goal)
+    mission_name = f"{date_str}_{slug}"
+    mission_path = os.path.join(base_dir, mission_name)
+    os.makedirs(mission_path, exist_ok=True)
+
+    # Create initial README
+    readme_path = os.path.join(mission_path, "README.md")
+    if not os.path.exists(readme_path):
+        with open(readme_path, "w", encoding="utf-8") as f:
+            f.write(f"# Mission: {goal}\n\n")
+            f.write(f"**Created:** {datetime.now().isoformat()}\n")
+            f.write(f"**Status:** Initialized\n\n")
+            f.write("This folder contains all state, artifacts, logs, and reports for this autonomous mission.\n")
+
+    print(f"📁 Mission folder created: {mission_path}")
+    return mission_path
+
+
+def save_mission_state(mission_path: str, state: Dict[str, Any]) -> str:
+    """Persist the current structured state to state.json inside the mission folder."""
+    state_file = os.path.join(mission_path, "state.json")
+    state["last_updated"] = datetime.now().isoformat()
+    with open(state_file, "w", encoding="utf-8") as f:
+        json.dump(state, f, indent=2, ensure_ascii=False)
+    print(f"💾 State saved → {state_file}")
+    return state_file
+
+
+def load_mission_state(mission_path: str) -> Dict[str, Any]:
+    """Load previous state.json if it exists. Returns empty dict if not found."""
+    state_file = os.path.join(mission_path, "state.json")
+    if os.path.exists(state_file):
+        with open(state_file, "r", encoding="utf-8") as f:
+            state = json.load(f)
+        print(f"📥 Loaded previous state from {state_file}")
+        return state
+    print("ℹ️ No previous state.json found. Starting fresh.")
+    return {}
+
+
+def get_mission_summary(mission_path: str) -> str:
+    """Return a concise human-readable summary of the mission progress."""
+    state_file = os.path.join(mission_path, "state.json")
+    if not os.path.exists(state_file):
+        return f"No state file found in {mission_path}"
+
+    with open(state_file, "r", encoding="utf-8") as f:
+        state = json.load(f)
+
+    completed = len(state.get("completed_steps", []))
+    milestones_done = sum(1 for m in state.get("milestones", []) if m.get("status") == "done")
+    total_milestones = len(state.get("milestones", []))
+    artifacts_count = len(state.get("artifacts", {}).get("files", []))
+
+    summary = f"""📋 Mission Summary
+Goal: {state.get('goal', 'Unknown')}
+Status: {state.get('status', 'unknown')}
+Progress: {completed} steps completed | {milestones_done}/{total_milestones} milestones done
+Artifacts: {artifacts_count} files tracked
+Last updated: {state.get('last_updated', 'N/A')}
+Mission folder: {mission_path}
+"""
+    return summary
+
+
+if __name__ == "__main__":
+    print("Tailor-Made Agents v15 - Single File Mode (Autonomous Orchestrator v2 + Persistence)")
+    load_all_agents()
+    print("\nExample usage:")
+    print("   chief = activate_agent('chief_of_staff')")
+    print("   auto  = activate_agent('autonomous_orchestrator')")
+    print("   mission_path = create_mission('My new research goal')")
+    print("   state = load_mission_state(mission_path)")
+    print("   # ... run autonomous mission ...")
+    print("   save_mission_state(mission_path, updated_state)")

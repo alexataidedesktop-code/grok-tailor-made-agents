@@ -7,6 +7,36 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [v15] - 2026-06-08
+
+### Added
+- **Autonomous Orchestrator Agent v2** (`autonomous_orchestrator`): The most advanced meta-agent in the system. Supports long-running, multi-session autonomous missions with:
+  - Automatic dated mission folder creation (`/home/workdir/artifacts/missions/`)
+  - Structured `state.json` persistence (milestones, reflections, decisions, artifacts)
+  - Robust resume capability across conversations
+  - Mandatory reflection after every major step
+  - Professional error recovery and replanning
+- 5 new mission persistence helper functions:
+  - `create_mission(goal)`
+  - `save_mission_state(mission_path, state)`
+  - `load_mission_state(mission_path)`
+  - `get_mission_summary(mission_path)`
+  - `sanitize_mission_slug(text)`
+- Full production-ready persistence protocol documented in the agent's system prompt.
+
+### Changed
+- Now **15 agents** total (v15).
+- `Chief of Staff` system prompt updated to include awareness of the new Autonomous Orchestrator.
+- `load_all_agents()` now reports v15 and 15 agents.
+- Single-file version (`TailorMade_Agents_v15.py`) is the recommended canonical implementation.
+- Updated documentation and examples for autonomous mission workflows.
+
+### Improved
+- Better long-horizon project support (research + code + analysis + visuals + legal in one persistent mission).
+- Stronger emphasis on professional project organization (state tracking, reflections, FINAL_REPORT.md).
+
+---
+
 ## [v14] - 2026-06-05
 
 ### Added
@@ -55,6 +85,5 @@ Initial release with 10 core agents:
 ## [Unreleased]
 
 ### Planned
-- Further improvements to single-file experience
-- Additional specialized agents (if needed)
-- Better examples and usage documentation
+- Additional specialized agents if needed
+- Enhanced examples and multi-agent workflow templates
